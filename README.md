@@ -50,4 +50,66 @@
 
 ## RAG
     Retrievel Argumentation Generation
+    When we are dealing with private data(like financial data) the model is not trained on, the llm doesnot know anything about it.
+    We need to find a way so that the llm can effectivly answer this kind of questions.
+
+    Solution:
+        Take entire book plug entire staff to the llm
+        This solution might work sometimes but there is a hard limit on how much data we can feed to llm
+        If it is a long document we are going to exceed token limit.
+        Even with LLMs 1 million or 2 million is still not ideal, it has many other disadvantages
+        The LLM is much less effective with very long prompts and very long context.
+        The larger prompts costs us more and there is a latency issue
+
+        Problems:
+            Hard token limit
+            Cost, latency
+    Solution2:
+        We are going to store the data in chunks, when ever user going to send query, it finds the most relevant chunk, and we are only going to feed that particaular chunk to the LLM
+        Drawbacks:
+            we need to add pre-processing step to check large documents
+            There is lot of depth in how do we chunk the document
+                what are the tokens that we are spliting to the document
+                how do we make sure that each chunk has relevant amount of data
+                We need different chunk strategies to different type of types
+                Searching mechanism searching over those chunks
+    RAG(Retrieval Argumentation Generation)
+        Retrieval - Retrieving the relevant chunk
+        Argumentation - that we take our prompt and we argument it with those relevant chunks
+        Generation - to simply send to the LLM and to use that when we make the query to LLM
+
+### Introduction to Vector databases
+    Topics to be covered:
+        Embeddings, Vector stores(Pinecones), RetrievalQA Chain, LangChain document readers, LangChain text splitters
+    
+    Suppose we have a large document, the data might be repeated in mutlipe paragraphs and if we wanted to get relevant data we might need to make multiple chunk calls to get data
+    If we start sending every chunk to llm that we will cost more
+    Is there any way to revelant data as a chunk
+    
+    Embeddings:
+        The idea is to create a vectoric space, such that distance between vectors have some meaning
+        Vector: a vector is a sequence of numbers, the vector can represent more complex object like words, sentences, images, audio files in continous high dimentional space called embeddings
+        
+        Embeddings think of like a black box, which receives the objects and those are represented by text does something to them that outputs them array of numbers, which represents those objects in vector space.
+
+        object1, object2 -> Embedding -> [0.6,0.3,0.1,...], [0.8,0.5,0.3...] (Objects of vector)
+
+![alt text](<Embeddings flow.png>)
+
+### Practical implementation at ingestion.py file that does this
+    Taking our data, making it a langchain object(TextLoader)
+    Split this object with a langchain splitters to smaller chuncks(TextSplitters)
+    Embed the chucks and get vectors (OpenAIEmbeddings)
+    Store the embeddings in pinecode vectorstore(PineconeVectorStore)
+
+    Packages needed are:
+        langchain-unstructured(text loader package), langchain-text-splitters, langchain-pinecone(PineconeVectorStore)
+
+    Next steps:
+        Retrive top k chunks from vector db and send to llm that gives the response
+
+### Queston and answers
+    In the context of RAG ingestion, what role do OpenAIEmbeddings serve?
+    
+
     
