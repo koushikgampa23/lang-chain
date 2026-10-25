@@ -26,4 +26,28 @@
     it can be any function that we want, so we can write internal implementation of that function, so this means we can give our agent endless possibilites of actions it can perform
 
     so we can make it call an API or search in a database to run and execute code.
-     
+
+### Into to the core architecture of the AI agents
+    Layer 0:
+        llm = ChatGoogleGenerativeAI("gemini-3.8-flash")
+        tools = [TavilySearch()]
+        agent = create_agent(llm, tools=tools)
+    Layer 1:
+        Agent loop + Function calling, (LangChain)
+        @tool, bind_tools(), init_chat_models(), ToolMessage
+                            |
+                            v
+        Agent Loop + function calling(RAW)
+        Hand-written JSON schemas, ollama.chat()
+    
+    Layer 2:
+        Agent Loop + Raw ReAct Prompt
+        ReAct prompt, regex, scratchpad
+
+### Agent Loop
+    Suppose you wanted to develop a discount application and how the LLM tools works are given below
+![alt text](<Agent loop and First layer.png>)
+
+## RAG
+    Retrievel Argumentation Generation
+    
