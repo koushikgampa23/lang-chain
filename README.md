@@ -27,7 +27,7 @@
 
     so we can make it call an API or search in a database to run and execute code.
 
-###Into to the core architecture of the AI agents
+### Into to the core architecture of the AI agents
     Layer 0:
         llm = ChatGoogleGenerativeAI("gemini-3.8-flash")
         tools = [TavilySearch()]
