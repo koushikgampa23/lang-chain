@@ -27,7 +27,7 @@
 
     so we can make it call an API or search in a database to run and execute code.
 
-### Into to the core architecture of the AI agents
+###Into to the core architecture of the AI agents
     Layer 0:
         llm = ChatGoogleGenerativeAI("gemini-3.8-flash")
         tools = [TavilySearch()]
@@ -46,6 +46,14 @@
 
 ### Agent Loop
     Suppose you wanted to develop a discount application and how the LLM tools works are given below
+    Example:
+        Query: what is the current temperature
+            Thought: I need to search for weather.
+            Action: Search[weather in Hyderabad]
+            Observation: Temperature is 28°C.
+            Thought: I have the required information.
+            Final Answer: It is 28°C in Hyderabad.
+            
 ![alt text](<Agent loop and First layer.png>)
 
 ## RAG
