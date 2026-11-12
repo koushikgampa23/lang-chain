@@ -56,6 +56,36 @@
             
 ![alt text](<Agent loop and First layer.png>)
 
+#### Agent Loop implementation
+    Important things to note:
+        init_chat_model - Initializes the LLM
+        tool - Converts Python functions into LangChain tools
+        HumanMessage - Represents the user's message
+        SystemMessage - Provides instructions to the LLM
+        ToolMessage - Represents the result returned by a tool
+        traceable - Tracks execution using LangSmith
+
+        what is bind_tools
+            Makes tool definitions available to the LLM.
+        Does bind_tools() execute functions?
+            No, the application executes them.
+        Why do we need tools_dict?
+            To map tool names to Python functions.
+        What is ToolMessage?
+            Carries the result of a tool execution back to the LLM.
+        Why do we need tool_call_id?
+            Associates a result with its originating tool call.
+        Why do we need an agent loop?
+            Allows multiple sequential tool calls.
+        Why MAX_ITERATIONS?
+            Prevents unbounded execution.
+        What is LangSmith?
+            Tracing, debugging and evaluating LLM applications.
+        Who actually executes get_product_price()?
+            Your Python application
+
+
+
 ## RAG
     Retrievel Argumentation Generation
     When we are dealing with private data(like financial data) the model is not trained on, the llm doesnot know anything about it.
