@@ -83,7 +83,8 @@
             Tracing, debugging and evaluating LLM applications.
         Who actually executes get_product_price()?
             Your Python application
-
+        Difference between llm.invoke(args), llm(**args)?
+            invoke is langchain's standardized execution interface that adds validation, tracing, and error handling around the cell. while **args is a direct python function call with none of them.
 
 
 ## RAG
