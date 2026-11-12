@@ -149,6 +149,29 @@
 
 ### Queston and answers
     In the context of RAG ingestion, what role do OpenAIEmbeddings serve?
-    
+
+#### Dense vector vs sparse vector
+    A dense vector is also referred as vector embedding or simple vector, is a series of numbers that represent the meaning and relationship of data, each vector is a point in a multidimensional space, and each number is a coordinate in that space. Vector that are closer together in that space are semantically similar
+
+    A dense vector is a list of numbers that captures the meanining of the text, Texts with similar meaning get vectors that sit close together, even when they share no words.
+
+    Sparse vector are often used to represent documents or queries in way that captures keyword information. Each dimension in a sparse vector typically represents a word from a dictionary, and the non-zero values represent the importance of these words in the document
+
+    A sparse vector is mostly zeros, it has a value for the word that appears in the text, so its good at matching exact keywords
+
+    In most of the times we use dense since we search by meaning
+
+    metrics:
+        Cosine:
+            The angle between them
+            Same direction means similar
+        Euclidean:
+            The distance between 2 points
+            Smaller means more similar
+        Dot product:
+            The angle and the length
+            Bigger means more similar
+        
+
 
     
